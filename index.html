@@ -106,27 +106,93 @@
         <li>SELECT `major`,GROUP_CONCAT(`name`) as '學生們' FROM `students` WHERE SUBSTRING(`seat_num`,1,3)='101' GROUP BY `major`</li>
         <li>SELECT `major`,GROUP_CONCAT(`name`) as '學生們' FROM `students` WHERE LEFT(`seat_num`,3)='101' GROUP BY `major`</li>
     </ul>
-    <h3>日期時間函式</h3>
+    <h3>日期時間函式 / IF()</h3>
     <ul>
-        <li>SELECT Month(`birthday`) as '出生月份', count(*) as '人數'
+       <li>SELECT Month(`birthday`) as '出生月份', count(*) as '人數'
         FROM `students` 
         GROUP BY MONTH(`birthday`) 
         ORDER BY MONTH(`birthday`)</li>
-        <li>SELECT `name` ,
+       <li>SELECT `name` ,
 		    FLOOR(DATEDIFF(CURRENT_DATE(),`birthday`)/365) AS '年齡' 
             FROM `students` 
             LIMIT 10;
         </li>
-        <li>
+       <li>
         SELECT `name` ,
         `birthday`,
          FLOOR(DATEDIFF(CURRENT_DATE(),`birthday`)/365) AS '年齡' ,
          IF (DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4))) > 0 , 365-DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4)))
          , 0-DATEDIFF(CURRENT_DATE(),REPLACE(`birthday`,LEFT(`birthday`,4),LEFT(CURRENT_DATE(),4))))
          as '下次生日天數'
-FROM `students` 
+ FROM `students` 
  LIMIT 10;
-        </li>
+       </li>
+       <li></li>
    </ul>
+   <h3>聯表查詢-form where</h3>
+   <ul>
+      <li>SELECT * FROM `students`,`major` WHERE `major`.`id`=`students`.`major`</li>
+      <li>SELECT `students`.*,`major`.`name` as 'major' FROM `students`,`major` WHERE `major`.`id`=`students`.`major`</li>
+      <li>SELECT `students`.`id`,`students`.`name`,`graduate_school`.`name` as '畢業國中' FROM `students`,`graduate_school`</li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' 
+        FROM `students`,`graduate_school` 
+        WHERE `students`.`graduate_at`=`graduate_school`.`id`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' ,
+                `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		        `students`.`name`,
+                `graduate_school`.`name` as '畢業國中' ,
+                `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id` && 
+	          `students`.`status_code`=`status`.`code`
+      </li>
+      <li>
+        SELECT `students`.`id`,
+		       `students`.`name`,
+               `students`.`birthday`,
+               `students`.`uni_id`,
+               `dept`.`name` as '科系',
+               `graduate_school`.`name` as '畢業國中' ,
+               `status`.`status` as '畢業狀態'
+        FROM `students`,`graduate_school`,`status`,`dept`
+        WHERE `students`.`graduate_at`=`graduate_school`.`id` && 
+	          `students`.`status_code`=`status`.`code` &&
+              `students`.`dept`=`dept`.`id`
+      </li>
+      <li>
+        SELECT `dept`.`name` as "科系",
+                GROUP_CONCAT(`students`.`name`) as "學生"
+        FROM `students`,`dept`,`class_student`
+        WHERE `students`.`dept`=`dept`.`id` && 
+                `students`.`school_num`=`class_student`.`school_num` &&
+                `class_student`.`class_code`=101
+        GROUP BY `dept`.`name`
+      </li>
+  </ul>
+   <h3>聯表查詢-Out Join</h3>
+   <ul>
+      <li>SELECT `dept`.`name`,count(*) as '人數' FROM `dept`,`students` WHERE `students`.`dept`=`dept`.`id` GROUP By `students`.`dept`</li>
+      <li>
+        SELECT `dept`.`name`,
+		count(`students`.`id`) as '人數' 
+FROM `dept`
+LEFT JOIN `students` 
+ON `students`.`dept`=`dept`.`id`
+GROUP By `dept`.`name`
+
+      </li>
+  </ul>
 </body>
 </html>
