@@ -32,22 +32,50 @@
 
     <h1>php連線資料庫(MySQLi)-函式類型</h1>
     <?php
-    $conn=mysqli_connect('localhost','root','','school2');
+    // $conn=mysqli_connect('localhost','root','','school2');
     
-    $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' FROM `students`,`dept` WHERE `dept`.`id`=`students`.`dept`";
+    // $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' FROM `students`,`dept` WHERE `dept`.`id`=`students`.`dept`";
 
-    $query=mysqli_query($conn,$sql);
-    $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
+    // $query=mysqli_query($conn,$sql);
+    // $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
 
-    echo var_dump($query);
+    // echo var_dump($query);
 
-    echo "<pre>";
-    print_r($rows);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($rows);
+    // echo "</pre>";
+
+    // 要取下一筆資料
+
+    // $rows=mysqli_fetch_array($query,MYSQLI_BOTH);
+    // echo "<pre>";
+    // print_r($rows);
+    // echo "</pre>";
 
     // echo $rows[0][3];
     // echo "<br>";
     // echo $rows[0]['birthday'];
     ?>
+
+    <h1>php連線資料庫(MySQLi)-函式類型-迴圈撈資料</h1>  
+    <?php
+    $conn=mysqli_connect('localhost','root','','school2');
+    
+    $sql="SELECT `students`.*,`dept`.`code`,`dept`.`name` as '科系' FROM `students`,`dept` WHERE `dept`.`id`=`students`.`dept`";
+
+    $query=mysqli_query($conn,$sql);
+    
+    $count=0;
+    while($row=mysqli_fetch_array($query,MYSQLI_BOTH)){
+        if($row['name']=='王鳳如'){
+            echo "<pre>";
+            print_r($row);
+            echo "</pre>";
+        }
+        $count++;
+    }
+    echo $count;
+    ?>     
+
 </body>
 </html>
