@@ -2,7 +2,6 @@
 
 include_once "connect.php";
 
-// 正是做法的話
 $acc=$_POST['acc'];
 // $acc=chkAcc($acc);
 
