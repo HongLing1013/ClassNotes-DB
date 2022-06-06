@@ -1,10 +1,9 @@
 <?php
 
-$dsn="mysql:host=localhost;charset=utf8;dbname=member";
-$pdo=new PDO($dsn,'root','');
+include_once "connect.php";
 
 // 正是做法的話
-// $acc=$_POST['acc'];
+$acc=$_POST['acc'];
 // $acc=chkAcc($acc);
 
 $sql="INSERT INTO `users` (`acc`,`pw`,`birthday`,`passnote`,`email`) 

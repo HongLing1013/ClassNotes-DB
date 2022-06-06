@@ -19,5 +19,19 @@
     <a href="login.php">登入</a>
 </nav>
 <h1 style="text-align:center">問卷</h1>
+
+<?php
+include_once "connect.php";
+//跟IO相關的工作 用include_once 其他用include就可
+$sql="select * from `users` ";
+
+$users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+foreach($users as $user){
+    echo $user['acc']."<br>";
+}
+
+?>
+
 </body>
 </html>
