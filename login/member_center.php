@@ -23,6 +23,14 @@
     echo '生日:'.$user['birthday']."<br>";
     echo 'email:'.$user['email']."<br>";
     ?>
-    <button>編輯</button>
+    <!-- 方法一 A標籤 -->
+    <button><a href='edit.php?=<?=$user['id'];?>'>編輯</a></button>
+    <!-- 方法二 input -->
+    <form action="edit.php" method='post'>
+        <input type="hidden" name="id" value="<?=$user['id'];?>">
+        <input type="submit" value="編輯">
+    </form>
+    <!-- JS重新導向 -->
+    <button onclick="location.href='edit.php?=<?=$user['id'];?>'">編輯</button> 
 </body>
 </html>
