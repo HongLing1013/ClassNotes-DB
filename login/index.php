@@ -42,6 +42,5 @@ foreach($users as $user){
 }
 
 ?>
-
 </body>
 </html>

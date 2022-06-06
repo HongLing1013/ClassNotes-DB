@@ -1,4 +1,3 @@
-
 <?php
 //檢查帳密是否正確
 include "connect.php";

@@ -7,12 +7,11 @@
     <title>會員登入</title>
     <style>
         table{
-            margin: auto;
-            width: 400px;
+            margin:auto;
+            width:400px;
         }
-
         table td{
-            padding: 1rem;
+            padding:1rem;
         }
         .btns{
             text-align: center;
@@ -21,17 +20,16 @@
 </head>
 <body>
     <?php
-       if(isset($_GET['error'])) {
-        echo "<h2 style='color:red;text-align:center'>{$_GET['error']}</h2>";
-    }
 
+       if(isset($_GET['error'])) {
+           echo "<h2 style='color:red;text-align:center'>{$_GET['error']}</h2>";
+       }
     ?>
     <form action="chk_login.php" method="post">
         <table>
             <tr>
                 <td>帳號</td>
-                <td>
-                    <input type="text" name="acc" id="">
+                <td><input type="text" name="acc" id="">
                 </td>
             </tr>
             <tr>
@@ -41,14 +39,11 @@
                 </td>
             </tr>
             <tr>
-                <td>
-                    <a href="register.php">尚未註冊?</a></td>
-                <td>
-                    <a href="forgot.php">忘記密碼?</a>
-                </td>
+                <td><a href="register.php">尚未註冊?</a></td>
+                <td><a href="forgot.php">忘記密碼?</a></td>
             </tr>
         </table>
-        <div class="btns">
+        <div class='btns'>
             <input type="submit" value="登入">
             <input type="reset" value="重置">
         </div>
