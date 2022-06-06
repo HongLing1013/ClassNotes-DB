@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2022-05-30 11:34:13
+-- 產生時間： 2022-05-30 10:28:32
 -- 伺服器版本： 10.4.24-MariaDB
 -- PHP 版本： 8.1.6
 
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `acc`, `pw`, `birthday`, `passnote`, `email`) VALUES
-(1, 'mack', '1234', '2022-06-14', '第一份工作的薪水', 'mack@yahoo.com');
+(1, 'mack', '1234', '2000-06-14', '第一份工作的薪水', 'mack@dfasdfsa.sfadfsdf');
 
 --
 -- 已傾印資料表的索引
