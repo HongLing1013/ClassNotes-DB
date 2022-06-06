@@ -19,6 +19,8 @@ $chk=$pdo->query($sql)->fetchColumn();
 // echo $user;  <-驗證是否取得資料
 // if($acc==$user['acc'] && $pw==$user['pw']){
 if($chk){
+    session_start();
+    $_SESSION['user']=$acc;
     header("location:member_center.php");
 }else{
     header("location:login.php?error=帳號或密碼錯誤");
