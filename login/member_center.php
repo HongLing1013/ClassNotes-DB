@@ -7,16 +7,15 @@
     <title>會員中心</title>
     <style>
         .remove{
-            color: #eee;
+            color:#eee;
         }
-
         .remove:hover{
             color:red;
         }
     </style>
 </head>
 <body>
-    <nav><a href="logout.php">登出</a></nav>
+<nav><a href="logout.php">登出</a></nav>
     <h1>會員中心</h1>
     <?php include "connect.php";?>
     歡迎<?=$_SESSION['user'];?>,祝你有美好的一天
@@ -32,16 +31,13 @@
     echo '生日:'.$user['birthday']."<br>";
     echo 'email:'.$user['email']."<br>";
     ?>
-    <!-- 方法一 A標籤 -->
-    <button><a href='edit.php?=<?=$user['id'];?>'>編輯</a></button>
+    <button><a href='edit.php?id=<?=$user['id'];?>'>編輯</a></button>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <a class="remove" href='remove_acc.php?id<?=$user['id'];?>'>移除個人資料</a>
-    
-    
+    <a class="remove" href='remove_acc.php?id=<?=$user['id'];?>'>移除個人資料</a>
     <!-- 方法二 input -->
     <!-- <form action="edit.php" method='post'>
         <input type="hidden" name="id" value="<?=$user['id'];?>">

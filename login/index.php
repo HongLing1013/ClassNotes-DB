@@ -8,10 +8,11 @@
     <title>問卷系統</title>
     <style>
         nav{
-            width: 900px;
-            margin: auto;
+            width:900px;
+            margin:auto;
             text-align: right;
         }
+
     </style>
 </head>
 <body>
@@ -40,8 +41,7 @@ foreach($users as $user){
     echo $user['acc']."<br>";
 }
 
-echo md5('4321');
-
 ?>
+
 </body>
 </html>
