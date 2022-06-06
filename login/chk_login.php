@@ -1,25 +1,24 @@
-<?php
 
-// 檢查帳密是否正確
+<?php
+//檢查帳密是否正確
 include "connect.php";
 $acc=$_POST['acc'];
 $pw=md5($_POST['pw']);
 
 /* if($acc==資料表中的acc && $pw==資料表中的pw){
-    // 登入成功->會員中心
+    //登入成功->會員中心
 }else{
-    // 登入失敗->回到登入頁->顯示錯誤訊息
+    //登入失敗->回到登入頁->顯示錯誤訊息
 }
-*/
+ */
 
 $sql="SELECT count(*) FROM `users` WHERE `acc`='$acc' && `pw`='$pw'";
-// $user=$pdo->query($sql)->fetchColumn();
+
+ //$user=$pdo->query($sql)->fetch();
 $chk=$pdo->query($sql)->fetchColumn();
-//1 or 0
-// echo $user;  <-驗證是否取得資料
-// if($acc==$user['acc'] && $pw==$user['pw']){
+
+//if($acc==$user['acc'] && $pw==$user['pw']){
 if($chk){
-    session_start();
     $_SESSION['user']=$acc;
     header("location:member_center.php");
 }else{

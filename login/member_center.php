@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會員中心</title>
+    <style>
+        .remove{
+            color: #eee;
+        }
+
+        .remove:hover{
+            color:red;
+        }
+    </style>
 </head>
 <body>
     <nav><a href="logout.php">登出</a></nav>
@@ -25,12 +34,20 @@
     ?>
     <!-- 方法一 A標籤 -->
     <button><a href='edit.php?=<?=$user['id'];?>'>編輯</a></button>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <a class="remove" href='remove_acc.php?id<?=$user['id'];?>'>移除個人資料</a>
+    
+    
     <!-- 方法二 input -->
-    <form action="edit.php" method='post'>
+    <!-- <form action="edit.php" method='post'>
         <input type="hidden" name="id" value="<?=$user['id'];?>">
         <input type="submit" value="編輯">
-    </form>
+    </form> -->
     <!-- JS重新導向 -->
-    <button onclick="location.href='edit.php?=<?=$user['id'];?>'">編輯</button> 
+    <!-- <button onclick="location.href='edit.php?=<?=$user['id'];?>'">編輯</button>  -->
 </body>
 </html>
